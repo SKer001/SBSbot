@@ -32,8 +32,8 @@ async def ping(ctx):
     await ctx.send(f"{round(bot.latency*1000)} (ms)")
 
 @bot.command()
-async def P(ctx):
-    await ctx.send(f"{round(bot.latency*1000)} (ms)")
+async def number5(ctx):
+    await ctx.send(f"pussy")
 
 
 
