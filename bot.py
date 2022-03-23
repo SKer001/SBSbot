@@ -1,23 +1,29 @@
 from sys import intern
 import discord
 from discord.ext import commands
-
-interns = discord.Intents.all()
+#intens為特殊權限管理 member要額外開
+intens = discord.Intents.all()
+#intens.members = True
 
 
 #BOT指令為$
-bot = commands.Bot(command_prefix='$')
+bot = commands.Bot(command_prefix='$',intens = intens)
 #上線後回傳到黑窗
 @bot.event
 async def on_ready():
     print(">> BOT is online <<")
-#RUNbot
-bot.run("OTU2MjEwOTE5NDc2Njk1MDYw.Yjs60A.nLYRWIUG3_INe-do5QweWZLAYvI")
 
 @bot.event
 async def on_member_join(member):
-    print(f"[member] join!")
+    channel = bot.get_channel(921239567611351093)
+    await channel.send(f"{member} join!")
+    print(f"{member} join!")                             #joun and leave 壞死
 
 @bot.event
 async def on_member_remove(member):
-    print(f"[member] leave!")
+    channel = bot.get_channel(921239567611351093)
+    await channel.send(f"{member} join!")
+    print(f"{member} leave!")
+
+#RUNbot
+bot.run("OTU2MjEwOTE5NDc2Njk1MDYw.Yjs60A.nLYRWIUG3_INe-do5QweWZLAYvI")
