@@ -35,5 +35,9 @@ async def ping(ctx):
 async def number5(ctx):
     await ctx.send(f"別玩手機")
 
+@bot.command()
+async def 早安(ctx):
+    await ctx.send(f"早安")
+
 #RUNbot
 bot.run("OTU2MjEwOTE5NDc2Njk1MDYw.Yjs60A.nLYRWIUG3_INe-do5QweWZLAYvI")
