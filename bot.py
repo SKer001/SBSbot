@@ -1,3 +1,4 @@
+from email.contentmanager import raw_data_manager
 from http.client import ImproperConnectionState
 import discord
 from discord.ext import commands
@@ -37,7 +38,9 @@ async def ping(ctx):
 
 @bot.command()
 async def number5(ctx):
-    await ctx.send(f"別玩手機")
+    random_N5 = random.choice(jdata["N5"])
+    N5 = str(random_N5)
+    await ctx.send(N5)
 
 @bot.command()
 async def 早安(ctx):
