@@ -4,53 +4,46 @@ import discord
 from discord.ext import commands
 import json
 import random
-
-with open("setting.json",mode="r",encoding="utf8") as jfile:
-    jdata = json.load(jfile)
+import os
 
 #intens為特殊權限管理 member要額外開
 intents = discord.Intents.default()
 intents.members = True
 
+with open("setting.json",mode="r",encoding="utf8") as jfile:
+    jdata = json.load(jfile)
 
 #BOT指令為$
 bot = commands.Bot(command_prefix='$',intents = intents)
+
 #上線後回傳到黑窗
 @bot.event
 async def on_ready():
     print(">> BOT is online <<")
+
+#bot每個cmd的載入 卸載 重新載入
+@bot.command()
+async def load(ctx,extension):
+    bot.load_extension(f"cmds.{extension}")
+    await ctx.send(f"Loaded {extension} done")
+@bot.command()
+async def unload(ctx,extension):
+    bot.unload_extension(f"cmds.{extension}")
+    await ctx.send(f"Unloaded {extension} done")
+@bot.command()
+async def reload(ctx,extension):
+    bot.reload_extension(f"cmds.{extension}")
+    await ctx.send(f"Reloaded {extension} done")
+
+
 #BOT事件 加入與離開   
-@bot.event
-async def on_member_join(member):
-    channel = bot.get_channel(int(jdata["Welcome_Channel"]))
-    await channel.send(f"@everyone {member} join!")
-    print(f"{member} join!")
 
-@bot.event
-async def on_member_remove(member):
-    channel = bot.get_channel(int(jdata["Leave_Channel"]))
-    await channel.send(f"@everyone {member} leave!")
-    print(f"{member} leave!")
-#  BOT$指令
-@bot.command()
-async def ping(ctx):
-    await ctx.send(f"{round(bot.latency*1000)} (ms)")
 
-@bot.command()
-async def number5(ctx):
-    random_N5 = random.choice(jdata["N5"])
-    N5 = str(random_N5)
-    await ctx.send(N5)
+for filename in os.listdir("./cmds"):
+    if filename.endswith(".py"):
+        bot.load_extension(f"cmds.{filename[:-3]}")
 
-@bot.command()
-async def 早安(ctx):
-    await ctx.send(f"早安")
-
-@bot.command()
-async def 圖片(ctx):
-    random_pic = random.choice(jdata["pic"])
-    pic = discord.File(random_pic)
-    await ctx.send(file= pic)
 
 #RUNbot
-bot.run(jdata["TOKEN"])
+if __name__ == "__main__":
+    bot.run(jdata["TOKEN"])
