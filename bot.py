@@ -10,7 +10,7 @@ import os
 intents = discord.Intents.default()
 intents.members = True
 
-with open("setting.json",mode="r",encoding="utf8") as jfile:
+with open("../jfile/setting.json",mode="r",encoding="utf8") as jfile:
     jdata = json.load(jfile)
 
 #BOT指令為$
