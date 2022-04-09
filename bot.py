@@ -35,14 +35,9 @@ async def reload(ctx,extension):
     bot.reload_extension(f"cmds.{extension}")
     await ctx.send(f"Reloaded {extension} done")
 
-
-#BOT事件 加入與離開   
-
-
 for filename in os.listdir("./cmds"):
     if filename.endswith(".py"):
         bot.load_extension(f"cmds.{filename[:-3]}")
-
 
 #RUNbot
 if __name__ == "__main__":
