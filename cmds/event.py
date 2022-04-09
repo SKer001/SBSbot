@@ -21,7 +21,7 @@ class event(Cog_Extension):
 
     @commands.Cog.listener()
     async def on_message(self,msg):
-        random_num5 = random.choice(jdata["number5"])
+        random_num5 = random.choice(jdata["崧瀚"])
         if msg.content.endswith("早安"):
             await msg.channel.send(f"早ㄤ阿")
         if msg.content.endswith("number5"):
