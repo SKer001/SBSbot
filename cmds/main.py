@@ -16,7 +16,7 @@ class main(Cog_Extension):
         , url="https://github.com/SKer001/SBSbot"
         , description="github"
         , color=0x00ccff
-        , timestamp=datetime.datetime.utcnow
+        ,timestamp=datetime.datetime.utcnow()
         )
         embed.set_image(url="https://cdn.discordapp.com/attachments/693782101463400498/962316326196617267/cb182ac7a68575a5.png?size=4096")
         embed.set_author(
