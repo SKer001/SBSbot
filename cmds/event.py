@@ -3,7 +3,7 @@ from discord.ext import commands
 from core.classes import Cog_Extension
 import random
 import json
-with open("../jfile/setting.json",mode="r",encoding="utf8") as jfile:
+with open("../setting.json",mode="r",encoding="utf8") as jfile:
     jdata = json.load(jfile)
     
 class event(Cog_Extension):
