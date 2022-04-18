@@ -24,16 +24,25 @@ async def on_ready():
 #bot每個cmd的載入 卸載 重新載入
 @bot.command()
 async def load(ctx,extension):
-    bot.load_extension(f"cmds.{extension}")
-    await ctx.send(f"Loaded {extension} done")
+    if  ctx.message.author.id == 403895664666214400:
+        bot.load_extension(f"cmds.{extension}")
+        await ctx.send(f"Loaded {extension} done")
+    else:
+            await ctx.send(f"你沒資格")
 @bot.command()
 async def unload(ctx,extension):
-    bot.unload_extension(f"cmds.{extension}")
-    await ctx.send(f"Unloaded {extension} done")
+    if  ctx.message.author.id == 403895664666214400:
+        bot.unload_extension(f"cmds.{extension}")
+        await ctx.send(f"Unloaded {extension} done")
+    else:
+            await ctx.send(f"你沒資格")
 @bot.command()
 async def reload(ctx,extension):
-    bot.reload_extension(f"cmds.{extension}")
-    await ctx.send(f"Reloaded {extension} done")
+    if  ctx.message.author.id == 403895664666214400:
+        bot.reload_extension(f"cmds.{extension}")
+        await ctx.send(f"Reloaded {extension} done")
+    else:
+            await ctx.send(f"你沒資格")
 
 for filename in os.listdir("./cmds"):
     if filename.endswith(".py"):
