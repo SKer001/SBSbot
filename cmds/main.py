@@ -29,6 +29,7 @@ class main(Cog_Extension):
         embed.add_field(name="測試服", value="https://discord.gg/AXCZ8NPcSV", inline=True)
         embed.add_field(name="YT", value="https://www.youtube.com/channel/UCaIrAS2jmGz877k0pkvNQWA", inline=False)
         embed.add_field(name="Twitch", value="https://www.twitch.tv/sker001", inline=False)
+        embed.add_field(name="邀請連結",value="https://discord.com/api/oauth2/authorize?client_id=956210919476695060&permissions=8&scope=bot")
         embed.set_footer(text="自主學習專用 ")
         await ctx.send(embed=embed)
 
