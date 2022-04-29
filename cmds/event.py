@@ -27,5 +27,6 @@ class event(Cog_Extension):
         if msg.content.endswith("number5"):
             await msg.channel.send(str(random_num5))
 
+
 def setup(bot):
     bot.add_cog(event(bot))
