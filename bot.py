@@ -9,6 +9,7 @@ import os
 #intens為特殊權限管理 member要額外開
 intents = discord.Intents.default()
 intents.members = True
+intents.presences = True
 
 with open("../setting.json",mode="r",encoding="utf8") as jfile:
     jdata = json.load(jfile)
