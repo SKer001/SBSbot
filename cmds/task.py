@@ -60,11 +60,5 @@ class task(Cog_Extension):
         else:
             await ctx.send(f"你沒資格")
 
-    
-
-
-    
-
-    
 def setup(bot):
     bot.add_cog(task(bot))
