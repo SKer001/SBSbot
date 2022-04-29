@@ -6,6 +6,7 @@ import json
 import random
 import os
 
+
 #intens為特殊權限管理 member要額外開
 intents = discord.Intents.default()
 intents.members = True
