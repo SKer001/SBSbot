@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from core.classes import Cog_Extension
 import datetime
+import random
 
 class main(Cog_Extension):
 
@@ -58,5 +59,18 @@ class main(Cog_Extension):
     async def check_time(self,ctx):
         await ctx.send(datetime.datetime.now().strftime("%H%M"))
 
+    @commands.command()
+    async def Team_up(self,ctx,ALLcount:int,count:int):
+        online = []
+        for member in ctx.guild.members:
+            if str(member.status) == "online" and member.bot == False:
+                online.append(member.name)
+        random_online = random.sample(online,k=ALLcount)
+        for squad in range(ALLcount//count):
+            a = random.sample(random_online,k=count)
+            await ctx.send(f"第{squad+1}小隊: "+str(a))
+            for name in a:
+                random_online.remove(name)
+        
 def setup(bot):
     bot.add_cog(main(bot))
