@@ -19,10 +19,19 @@ class music(Cog_Extension):
         voice = get(self.bot.voice_clients, guild=ctx.guild)
         if voice and voice.is_connected():
             await voice.move_to(channel)
+            ctx.send(f"Bot is connected")
         else:
             voice = await channel.connect()
+            ctx.send(f"Bot is connected")
 
-    
+    @commands.command()
+    async def leave(self,ctx):
+        voice = get(self.bot.voice_clients, guild=ctx.guild)
+        if voice.is_connected():
+                await ctx.voice_client.disconnect()
+                ctx.send(f"Bot is disconnected")
+
+
     @commands.command()
     async def play(self,ctx, url):
         YDL_OPTIONS = {"format": "bestaudio", "noplaylist": "True"}
@@ -41,13 +50,6 @@ class music(Cog_Extension):
             await ctx.send("Bot is already playing")
             return
 
-    @commands.command()
-    async def resume(self,ctx):
-        voice = get(self.bot.voice_clients, guild=ctx.guild)
-
-        if not voice.is_playing():
-            voice.resume()
-            await ctx.send("Bot is resuming")
 
     @commands.command()
     async def pause(self,ctx):
@@ -68,9 +70,6 @@ class music(Cog_Extension):
             voice.stop()
             await ctx.send("Stopping...")
     
-    @commands.command()
-    async def leave(self,ctx):
-        channel = ctx.message.author.voice.channel
-
+    
 def setup(bot):
     bot.add_cog(music(bot))
