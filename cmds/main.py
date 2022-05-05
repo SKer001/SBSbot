@@ -72,6 +72,18 @@ class main(Cog_Extension):
             await ctx.send(f"第{squad+1}小隊: "+str(a))
             for name in a:
                 random_online.remove(name)
+
+    @commands.command()
+    async def create_TC(self,ctx,name:str):
+        guild = ctx.message.guild
+        await guild.create_text_channel(name)
+
+    @commands.command()
+    async def delete(self,ctx):
+        guild = ctx.message.guild
+        channel = ctx.message.channel.name
+        delete_channel = discord.utils.get(guild.channels,name=channel )
+        await delete_channel.delete()
         
 def setup(bot):
     bot.add_cog(main(bot))
