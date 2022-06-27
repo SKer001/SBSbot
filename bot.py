@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix='$',intents = intents,help_command=None)
 @bot.event
 async def on_ready():
     print(">> BOT is online <<")
-
+ 
 #bot每個cmd的載入 卸載 重新載入
 @bot.command()
 async def load(ctx,extension):
