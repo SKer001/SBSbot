@@ -26,6 +26,8 @@ class event(Cog_Extension):
             await msg.channel.send(f"早ㄤ阿")
         if msg.content.endswith("number5"):
             await msg.channel.send(str(random_num5))
+        else:
+            print("沒有詞語")
 
 
 def setup(bot):
